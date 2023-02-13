@@ -1,7 +1,7 @@
-import { ActivityType } from "discord.js";
+import { ActivityType, Client } from "discord.js";
 import { client } from "./main";
 
-client.once("ready", (botClient) => {
+client.once("ready", (botClient: Client<true>) => {
   if (botClient) {
     botClient.user.setPresence({
       activities: [{ name: "Alla busiga elever", type: ActivityType.Watching }],

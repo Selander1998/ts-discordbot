@@ -32,10 +32,7 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
         try {
           await reaction.fetch();
         } catch (error) {
-          console.error(
-            "Something went wrong when fetching the message:",
-            error
-          );
+          console.log(`Something went wrong while fetching message: ${error}`)
           return;
         }
       }
