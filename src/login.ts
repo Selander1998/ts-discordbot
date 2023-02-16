@@ -4,7 +4,7 @@ import { client } from "./main";
 client.once("ready", (botClient: Client<true>) => {
   if (botClient) {
     botClient.user.setPresence({
-      activities: [{ name: "Alla busiga elever", type: ActivityType.Watching }],
+      activities: [{ name: "alla busiga elever", type: ActivityType.Watching }],
       status: "online",
     });
     console.log(

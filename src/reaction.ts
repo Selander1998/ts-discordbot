@@ -1,10 +1,7 @@
 import { Events } from "discord.js";
-import { client, debugging } from "./main";
+import { client } from "./main";
 
 client.on(Events.MessageReactionAdd, async (reaction, user) => {
-  if (debugging) {
-    console.log(`DEBUG: ${user.username} reacted with: ${reaction.emoji}`);
-  }
 
   const guild = client.guilds.cache.get("314043078849593345");
 
@@ -16,17 +13,12 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
       message.channel.send("Din användare kunde inte lokaliseras.");
       return;
     }
-
-    if (debugging) {
-      console.log("DEBUG: message id: ", message.id);
-    }
+    console.log("DEBUG: message id: ", message.id);
 
     if (message.id === "1072571508540584008") {
-      if (debugging) {
-        console.log(
-          `DEBUG: identifier for emoji: ${reaction.emoji.identifier}`
-        );
-      }
+      console.log(
+        `identifier for emoji: ${reaction.emoji.identifier}`
+      );
 
       if (reaction.partial) {
         try {
@@ -81,11 +73,9 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
               );
             } else {
               member.roles.add(roleToGive);
-              if (debugging) {
-                console.error(
-                  `Added role: ${roleToGive.name} to ${member.displayName}`
-                );
-              }
+              console.log(
+                `Added role: ${roleToGive.name} to ${member.displayName}`
+              );
             }
           } else {
             message.channel.send(
