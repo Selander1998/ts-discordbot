@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const main_1 = require("./main");
+main_1.client.on("messageCreate", async (message) => {
+    const prefix = "!";
+    if (!message.content.startsWith(prefix) || message.author.bot)
+        return;
+    const args = message.content.slice(prefix.length).split(/ +/);
+    if (args[0]) {
+        const command = args[0];
+        if (command === "setuproles") {
+            const roleMessage = message.channel.send("Reagera på detta meddelandet för att ge dig själv respektive roll.\n\n:rat: - League of Legends\n\n:gun: - Apex Legends\n\n:dragon: - Path of Exile\n\n:ringed_planet: - Destiny\n\n:man_rowing_boat: - Raft\n\n:recycle: - Återställ dina roller.");
+            const emojiIdentifiers = [
+                "%F0%9F%90%80",
+                "%F0%9F%94%AB",
+                "%F0%9F%90%89",
+                "%F0%9F%AA%90",
+                "%F0%9F%9A%A3%E2%80%8D%E2%99%82%EF%B8%8F",
+                "%E2%99%BB%EF%B8%8F",
+            ];
+            for (const emoji of emojiIdentifiers) {
+                (await roleMessage).react(emoji);
+                console.log(emoji);
+            }
+        }
+        if (command === "ping") {
+            message.channel.send(`Websocket heartbeat: ${main_1.client.ws.ping}ms.`);
+        }
+    }
+});
