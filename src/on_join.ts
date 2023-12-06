@@ -1,7 +1,9 @@
 import { Client, GuildMember } from "discord.js";
 export class UserJoined {
 	private constructor(client: Client) {
+		console.log("Noticed UserJoined constructor");
 		client.on("guildMemberAdd", (member: GuildMember) => {
+			console.log("Event guildMemberAdd triggered");
 			const guild = client.guilds.cache.get(member.guild.id);
 			const roleId = "514826778057900041";
 

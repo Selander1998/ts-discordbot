@@ -40,6 +40,7 @@ client.once("ready", (botClient: Client<true>) => {
 	UserJoined.init(client);
 	MessageListener.init(client);
 	ReactionListener.init(client);
+	console.log("Ran init funcs");
 });
 
 client.login("NzYzNzQxMTM5MjQ0OTQxMzMy.X38HXQ.kXrG7VDNP3zIEfYYSqXfI_XZVSA");
