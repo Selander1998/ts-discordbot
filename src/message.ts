@@ -10,16 +10,9 @@ export class MessageListener {
 
 				if (command === "setuproles") {
 					const roleMessage = message.channel.send(
-						"Reagera på detta meddelandet för att ge dig själv respektive roll.\n\n:rat: - League of Legends\n\n:gun: - Apex Legends\n\n:dragon: - Path of Exile\n\n:ringed_planet: - Destiny\n\n:recycle: - Återställ dina roller."
+						"Reagera på detta meddelandet för att ge dig själv respektive roll.\n\n🐀 - League of Legends\n\n🔫 - Apex Legends\n\n🐉 - Path of Exile\n\n🪐 - Destiny\n\n♻ - Återställ dina roller."
 					);
-					const emojiIdentifiers = [
-						"%F0%9F%90%80",
-						"%F0%9F%94%AB",
-						"%F0%9F%90%89",
-						"%F0%9F%AA%90",
-						"%F0%9F%9A%A3%E2%80%8D%E2%99%82%EF%B8%8F",
-						"%E2%99%BB%EF%B8%8F",
-					];
+					const emojiIdentifiers = ["🐀", "🔫", "🐉", "🪐", "♻"];
 					for (const emoji of emojiIdentifiers) {
 						(await roleMessage).react(emoji);
 						console.log(emoji);
