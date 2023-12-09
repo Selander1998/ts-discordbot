@@ -1,4 +1,12 @@
 import { Client } from "discord.js";
+
+export const emojis = [
+	"🐀",
+	"🔫",
+	"🐉",
+	"🪐"
+]
+
 export class MessageListener {
 	private constructor(client: Client) {
 		client.on("messageCreate", async (message) => {
@@ -24,8 +32,8 @@ export class MessageListener {
 
 					const roleMessage = await message.channel.send(baseMessage);
 
-					for (const emoji of emojiIdentifiers) {
-						(roleMessage).react(emoji.split(" ")[0]);
+					for (const emoji of emojis) {
+						(roleMessage).react(emoji);
 					}
 
 					message.delete()
