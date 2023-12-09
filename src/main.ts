@@ -3,6 +3,7 @@ import { Client, GatewayIntentBits, Partials, ActivityType, Events } from "disco
 import { UserJoined } from "./on_join";
 import { MessageListener } from "./message";
 import { ReactionListener } from "./reaction";
+import { request } from "node:http";
 
 const debugging = true;
 
