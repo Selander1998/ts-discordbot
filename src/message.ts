@@ -11,10 +11,15 @@ export class MessageListener {
 
 				if (command === "setuproles") {
 					const emojiIdentifiers: Array<string> = [
-						"🐀 - League of Legends", // League of Legends
-						"🔫 - Apex Legends", // Apex Legends
-						"🐉 - Path of Exile", // Path of Exile
-						"🪐 - Destiny 2", // Destiny 2
+						"🐀 - League of Legends",
+						"🔫 - Apex Legends",
+						"🐉 - Path of Exile",
+						"🪐 - Destiny 2",
+						"🗡️ - Diablo 4",
+						"💣 - Counter-Strike 2",
+						"⌛ - Last Epoch",
+						"🖥️ - Kodapa",
+						"🍄 - Maplestory"
 					]
 
 					let baseMessage = "Reagera på detta meddelandet för att ge dig själv respektive roll, tar du bort reaktionen så tas rollen bort igen."
@@ -26,7 +31,11 @@ export class MessageListener {
 					const roleMessage = await message.channel.send(baseMessage);
 
 					for (const emoji of emojiIdentifiers) {
-						(roleMessage).react(emoji.split(" ")[0]);
+						try {
+							await (roleMessage).react(emoji.split(" ")[0]);
+						} catch (error) {
+							console.log(error);
+						}
 					}
 
 					message.delete()
