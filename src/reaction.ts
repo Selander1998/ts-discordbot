@@ -6,6 +6,7 @@ import {
 	PartialUser,
 	User,
 } from "discord.js";
+import { logging } from "./main";
 
 export class ReactionListener {
 	private constructor(client: Client) {
@@ -28,6 +29,12 @@ export class ReactionListener {
 
 		if (guild) {
 			const message = reaction.message;
+			if (!message) return console.error(`Missing value for message: $(message)`);
+
+			const stateString = (state && "added") || "removed";
+			if (logging)
+				console.log(`LOG: ${user.username} ${stateString} reaction emoji: ${reaction.emoji}`);
+
 			const member = guild.members.cache.get(user.id);
 			if (!member) return console.error(`Missing value for member: ${member}`);
 
