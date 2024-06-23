@@ -11,18 +11,20 @@ export class MessageListener {
 
 				if (command === "setuproles") {
 					const emojiIdentifiers: Array<string> = [
-						"🐀 - League of Legends",
 						"🔫 - Apex Legends",
-						"🐉 - Path of Exile",
-						"🪐 - Destiny 2",
-						"🗡️ - Diablo 4",
 						"💣 - Counter-Strike 2",
-						"⌛ - Last Epoch",
+						"🪐 - Destiny 2",
+						"🗡️ - Diablo",
 						"🖥️ - Kodapa",
-						"🍄 - Maplestory"
-					]
+						"⌛ - Last Epoch",
+						"🍄 - Maplestory",
+						"🐉 - Path of Exile",
+						"⚔️ - Runescape",
+						"🐀 - World of Warcraft",
+					];
 
-					let baseMessage = "Reagera på detta meddelandet för att ge dig själv respektive roll, tar du bort reaktionen så tas rollen bort igen."
+					let baseMessage =
+						"Reagera på detta meddelandet för att ge dig själv respektive roll, tar du bort reaktionen så tas rollen bort igen.";
 
 					for (const emojiString of emojiIdentifiers) {
 						baseMessage = baseMessage + "\n\n" + emojiString;
@@ -32,19 +34,18 @@ export class MessageListener {
 
 					for (const emoji of emojiIdentifiers) {
 						try {
-							await (roleMessage).react(emoji.split(" ")[0]);
+							await roleMessage.react(emoji.split(" ")[0]);
 						} catch (error) {
 							console.log(error);
 						}
 					}
 
-					message.delete()
+					message.delete();
 				}
 
 				if (command === "ping") {
 					message.channel.send(`Websocket heartbeat: ${client.ws.ping}ms.`);
 				}
-
 			}
 		});
 	}

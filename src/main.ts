@@ -3,9 +3,8 @@ import { Client, GatewayIntentBits, Partials, ActivityType, Events } from "disco
 import { UserJoined } from "./on_join";
 import { MessageListener } from "./message";
 import { ReactionListener } from "./reaction";
-import { request } from "node:http";
 
-const debugging = true;
+const logging = true;
 
 export const client = new Client({
 	intents: [
@@ -33,9 +32,9 @@ client.once("ready", (botClient: Client<true>) => {
 	});
 	console.log(`Bot successfully loaded its client and is now logged in as: ${botClient.user.tag}`);
 	setImmediate(() => {
-		if (debugging) {
+		if (logging) {
 			client.on(Events.MessageReactionAdd, async (reaction, user) => {
-				console.log(`DEBUG: ${user.username} reacted with: ${reaction.emoji}`);
+				console.log(`LOG: ${user.username} reacted with: ${reaction.emoji}`);
 			});
 		}
 	});

@@ -1,9 +1,9 @@
 import { Client, GuildMember } from "discord.js";
+
 export class UserJoined {
 	private constructor(client: Client) {
 		console.log("Noticed UserJoined constructor");
 		client.on("guildMemberAdd", (member: GuildMember) => {
-
 			const guild = client.guilds.cache.get(member.guild.id);
 			const roleId = "514826778057900041";
 
@@ -19,13 +19,12 @@ export class UserJoined {
 				}
 				member.roles.add(roleToGive.id);
 			} else {
-				const role = guild.roles.cache.get(roleId)
+				const role = guild.roles.cache.get(roleId);
 
-				if (!role) return console.error("Role name unknown")
+				if (!role) return console.error("Role name unknown");
 
 				console.log(`Could not add role ${role.name} to newly joined user: ${member.displayName}`);
 			}
-			
 		});
 	}
 
