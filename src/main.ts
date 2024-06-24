@@ -4,9 +4,10 @@ import { UserJoined } from "./on_join";
 import { MessageListener } from "./message";
 import { ReactionListener } from "./reaction";
 import { SequelizeWrapper } from "./sequelize";
+import dotenv from "dotenv";
 
 export const logging = true;
-
+export const envConfig = dotenv.config();
 export const client = new Client({
 	intents: [
 		GatewayIntentBits.DirectMessages,
@@ -45,4 +46,4 @@ client.once("ready", (botClient: Client<true>) => {
 	if (logging) console.log("LOG: All init functions ran successfully");
 });
 
-client.login("NzYzNzQxMTM5MjQ0OTQxMzMy.X38HXQ.kXrG7VDNP3zIEfYYSqXfI_XZVSA");
+client.login(process.env.BOT_TOKEN as string);

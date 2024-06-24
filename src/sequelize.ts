@@ -1,7 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
-import dotenv from "dotenv";
+import { envConfig } from "./main";
 
-const envConfig = dotenv.config();
 const queryTypes = require("sequelize"); // Does not work with import("sequelize"), don´t know why. Common JS is just to good i guess?
 
 export class SequelizeWrapper {
