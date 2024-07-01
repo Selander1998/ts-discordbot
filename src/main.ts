@@ -1,9 +1,10 @@
 import process from "node:process";
-import { Client, GatewayIntentBits, Partials, ActivityType, Events } from "discord.js";
+import { Client, GatewayIntentBits, Partials, ActivityType } from "discord.js";
 import { UserJoined } from "./on_join";
 import { MessageListener } from "./message";
 import { ReactionListener } from "./reaction";
 import { SequelizeWrapper } from "./sequelize";
+import { CommandsLoader } from "./commands";
 import dotenv from "dotenv";
 
 export const logging = true;
@@ -33,7 +34,11 @@ client.once("ready", (botClient: Client<true>) => {
 		status: "online",
 	});
 
-	SequelizeWrapper.init() || console.error("LOG: SequelizeWrapper failed to initialize properly");
+	SequelizeWrapper.init(client) ||
+		console.error("LOG: SequelizeWrapper failed to initialize properly");
+
+	CommandsLoader.init(client) ||
+		console.error("LOG: CommmandsLoader failed to initialize properly");
 
 	UserJoined.init(client) || console.error("LOG: UserJoined failed to initialize properly");
 

@@ -25,7 +25,7 @@ export class ReactionListener {
 		user: PartialUser | User,
 		state: boolean
 	) {
-		const guild = client.guilds.cache.get("314043078849593345");
+		const guild = client.guilds.cache.get(process.env.BOT_GUILD_ID as string);
 
 		if (guild) {
 			const message = reaction.message;

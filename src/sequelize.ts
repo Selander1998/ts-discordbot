@@ -1,24 +1,19 @@
-import { Sequelize, DataTypes } from "sequelize";
-import { envConfig } from "./main";
-
-const queryTypes = require("sequelize"); // Does not work with import("sequelize"), don´t know why. Common JS is just to good i guess?
+import { Client } from "discord.js";
+import { Sequelize, DataTypes, Dialect, QueryTypes } from "sequelize";
 
 export class SequelizeWrapper {
 	private static instance: Sequelize;
 
-	private constructor() {
+	private constructor(client: Client) {
 		console.log("Noticed SequelizeWrapper constructor");
-
-		console.log(envConfig.error);
-		console.log(envConfig.parsed);
 
 		SequelizeWrapper.instance = new Sequelize(
 			process.env.DB_NAME as string,
 			process.env.DB_USER as string,
 			process.env.DB_PASSWORD as string,
 			{
-				host: process.env.DB_NAME as string,
-				dialect: process.env.DB_NAME as any,
+				host: process.env.DB_HOST as string,
+				dialect: process.env.DB_DIALECT as Dialect,
 			}
 		);
 
@@ -31,8 +26,10 @@ export class SequelizeWrapper {
 				console.error("Unable to connect to the database:", error);
 			});
 
-		if (process.env.DB_CREATE) {
-			console.log("Setting up database tables...");
+		if ((process.env.DB_CREATE as string) == "true") {
+			console.log(
+				".env indicates that you wish to set up database tables\nSetting up database tables..."
+			);
 			SequelizeWrapper.generateTables();
 		}
 	}
@@ -41,13 +38,21 @@ export class SequelizeWrapper {
 		this.instance.define(
 			"roles",
 			{
-				roleId: {
+				role_id: {
 					type: DataTypes.STRING,
 					allowNull: false,
 					primaryKey: true,
 				},
-				emojiId: {
+				emoji_id: {
 					type: DataTypes.STRING,
+					allowNull: false,
+				},
+				updated_at: {
+					type: DataTypes.DATE,
+					allowNull: false,
+				},
+				created_at: {
+					type: DataTypes.DATE,
 					allowNull: false,
 				},
 			},
@@ -61,19 +66,22 @@ export class SequelizeWrapper {
 
 	public static async fetchRoles() {
 		const rolesData = await this.instance.query("SELECT * FROM roles", {
-			type: queryTypes.SELECT,
+			type: QueryTypes.SELECT,
 		});
 		return rolesData;
 	}
 
 	public static async addRole(roleId: string, emojiId: string) {
-		this.instance.query("INSERT INTO `roles` (roleId, emojiId) VALUES (?, ?)", {
-			replacements: [roleId, emojiId],
-			type: queryTypes.INSERT,
-		});
+		this.instance.query(
+			"INSERT INTO `roles` (role_id, emoji_id, created_at, updated_at) VALUES (?, ?)",
+			{
+				replacements: [roleId, emojiId],
+				type: QueryTypes.INSERT,
+			}
+		);
 	}
 
-	public static init() {
-		return new SequelizeWrapper();
+	public static init(client: Client) {
+		return new SequelizeWrapper(client);
 	}
 }
