@@ -8,7 +8,7 @@ export class RoleManager {
 
 	public constructor(client: Client) {
 		this.client = client;
-		this.channelId = "1071790160271917096"; // TODO: fetch relevant channel
+		this.channelId = process.env.GUILD_INVITE_CHANNEL as string;
 		this.activeMessage = null;
 
 		this.setupMessage();

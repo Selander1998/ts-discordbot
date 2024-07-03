@@ -2,6 +2,7 @@ import process from "node:process";
 import { Client, GatewayIntentBits, Partials, ActivityType } from "discord.js";
 import { Dialect } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
+import { InviteManager } from "./invite";
 import { UserJoined } from "./joinrole";
 import { MessageListener } from "./message";
 import { ReactionListener } from "./reaction";
@@ -53,6 +54,8 @@ client.once("ready", async (botClient: Client<true>) => {
 
 	const roleManager =
 		new RoleManager(client) || console.error("LOG: RoleManager failed to initialize properly");
+
+	new InviteManager(client) || console.error("LOG: InviteManager failed to initialize properly");
 
 	CommandsLoader.init(client, roleManager) ||
 		console.error("LOG: CommmandsLoader failed to initialize properly");
