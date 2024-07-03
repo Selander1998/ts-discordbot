@@ -72,7 +72,7 @@ export class CommandsLoader {
 
 					const roles = await this.getRolesFromDb();
 					for (const role of roles) {
-						if (interaction.customId === role.buttonName) {
+						if (interaction.customId === role.roleId) {
 							roleId = role.roleId;
 							break;
 						}
@@ -97,26 +97,6 @@ export class CommandsLoader {
 					} catch (error) {
 						console.log(error);
 					}
-
-					//if (interaction.customId === "apexButton") {
-					//	roleId = "859710965448441866";
-					//} else if (interaction.customId === "counterstrikeButton") {
-					//	roleId = "1098691782310629438";
-					//} else if (interaction.customId === "destinyButton") {
-					//	roleId = "763726191789604894";
-					//} else if (interaction.customId === "codezButton") {
-					//	roleId = "1066085269557739591";
-					//} else if (interaction.customId === "diabloButton") {
-					//	roleId = "1119690341050757130";
-					//} else if (interaction.customId === "lastepochButton") {
-					//	roleId = "1083485479271403650";
-					//} else if (interaction.customId === "maplestoryButton") {
-					//	roleId = "1182052608106569778";
-					//} else if (interaction.customId === "pathofexileButton") {
-					//	roleId = "745395694919221323";
-					//} else if (interaction.customId === "worldofwarcraftButton") {
-					//	roleId = "1066085709066276926";
-					//}
 				}
 			}
 		});
