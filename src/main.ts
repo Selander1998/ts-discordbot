@@ -1,11 +1,14 @@
 import process from "node:process";
 import { Client, GatewayIntentBits, Partials, ActivityType } from "discord.js";
-import { UserJoined } from "./on_join";
+import { Dialect } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
+import { UserJoined } from "./joinrole";
 import { MessageListener } from "./message";
 import { ReactionListener } from "./reaction";
-import { SequelizeWrapper } from "./sequelize";
 import { CommandsLoader } from "./commands";
+import { RoleManager } from "./rolemanager";
 import dotenv from "dotenv";
+import { Role } from "./dbmodels/role";
 
 export const logging = true;
 export const envConfig = dotenv.config();
@@ -22,7 +25,21 @@ export const client = new Client({
 	partials: [Partials.Channel, Partials.Message, Partials.Reaction],
 });
 
-client.once("ready", (botClient: Client<true>) => {
+const sequelizeInstance = new Sequelize(
+	process.env.DB_NAME as string,
+	process.env.DB_USER as string,
+	process.env.DB_PASSWORD as string,
+	{
+		host: process.env.DB_HOST as string,
+		dialect: process.env.DB_DIALECT as Dialect,
+		models: [Role],
+	}
+);
+
+client.once("ready", async (botClient: Client<true>) => {
+	await sequelizeInstance.authenticate();
+	await sequelizeInstance.sync();
+
 	if (!botClient) {
 		console.error("Bot did not correctly load its client, exiting process");
 		process.exit(0);
@@ -34,10 +51,10 @@ client.once("ready", (botClient: Client<true>) => {
 		status: "online",
 	});
 
-	SequelizeWrapper.init(client) ||
-		console.error("LOG: SequelizeWrapper failed to initialize properly");
+	const roleManager =
+		new RoleManager(client) || console.error("LOG: RoleManager failed to initialize properly");
 
-	CommandsLoader.init(client) ||
+	CommandsLoader.init(client, roleManager) ||
 		console.error("LOG: CommmandsLoader failed to initialize properly");
 
 	UserJoined.init(client) || console.error("LOG: UserJoined failed to initialize properly");
