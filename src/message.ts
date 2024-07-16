@@ -1,5 +1,6 @@
 import { Client } from "discord.js";
 import profanity from "../json/profanity.json";
+import { Delay } from "./delay";
 
 export class MessageListener {
 	private constructor(client: Client) {
@@ -7,6 +8,8 @@ export class MessageListener {
 			for (const word of profanity.filter) {
 				if (message.content.includes(word)) {
 					message.reply("Apapap, dumma ord här... Stopp och belägg!");
+					new Delay(5000);
+					message.delete();
 				}
 			}
 		});

@@ -1,8 +1,8 @@
-# Discord Role Manager Bot
+# Typescipt Discordbot
 
 ## Overview
 
-Discord Role Manager Bot is a feature-rich Discord bot built with TypeScript. It allows users to add roles to themselves via interactive messages and stores roles data in a database. Additionally, the bot sends a welcome message with a Discord invite link upon startup. It also provides commands to manage roles dynamically without needing a bot restart.
+Discord Bot built with TypeScript. It allows users to add roles to themselves via interactive messages and stores roles data in a database. Additionally, the bot sends a welcome message with a Discord invite link upon startup. It also provides commands to manage roles dynamically without needing a bot restart.
 
 ## Features
 
@@ -11,6 +11,7 @@ Discord Role Manager Bot is a feature-rich Discord bot built with TypeScript. It
 - **Database Integration:** Saves roles data in a database for persistent role management.
 - **Runtime Commands:** Offers commands to manage roles dynamically without requiring a bot restart.
 - **Server Join Role Assignment:** Adds a role automatically on a users server join.
+- **Profanity Filter:** Gives users a warning when using a word
 
 ## Prerequisites
 
