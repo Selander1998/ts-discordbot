@@ -5,7 +5,7 @@ import { RoleManager } from "../rolemanager";
 const roleadderCommand = {
 	data: new SlashCommandBuilder()
 		.setName("addroletodb")
-		.setDescription("Returns client websocket ping")
+		.setDescription("Adds a role to the interactive message")
 		.addStringOption((roleId: SlashCommandStringOption) =>
 			roleId
 				.setName("roleid")
