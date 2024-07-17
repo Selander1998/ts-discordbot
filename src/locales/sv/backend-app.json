@@ -3,5 +3,13 @@
 	"ping_command_description": "Hämtar discordklientens WebSocket ping",
 	"pinging_websocket": "Pingar WebSocket...",
 	"websocket_response_invalid": "Fördröjningen är {{latency}}ms.\nWebSocket ping kunde inte hämtas korrekt.",
-	"websocket_response_valid": "Fördröjningen is {{latency}}ms.\nWebSocket pingen är {{websocket_ping}}ms."
+	"websocket_response_valid": "Fördröjningen is {{latency}}ms.\nWebSocket pingen är {{websocket_ping}}ms.",
+	"roleadder_command_description": "Lägger till en ny roll i det interaktiva meddelandet",
+	"roleadder_command_role_description": "ID för rollen du vill lägga till interaktionen för",
+	"roleadder_command_buttonname_description": "Namnet för rollen du vill skapa interaktionen för, måste vara ett ord. Exempel: pathofexile",
+	"roleadder_command_buttonlabel_desription": "Texten som skall stå på interaktionen. Exempel: Path of Exile",
+	"roleadder_command_invalid_role_id": "Du angav ett felaktigt roll id",
+	"roleadder_command_invalid_buttonname": "Du angav ett felaktigt namn för interaktionen",
+	"roleadder_command_invalid_buttonlabel": "Du angav en felaktig text för interaktionen",
+	"roleadder_command_interation_added": "Interaktion lades till för rollen ({{roleId.value}}) med namnet ({{buttonName.value}}) interaktionstext ({{buttonLabel.value}})"
 }

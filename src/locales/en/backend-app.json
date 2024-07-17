@@ -3,5 +3,13 @@
 	"ping_command_description": "Fetches the ping and latency to the WebSocket",
 	"pinging_websocket": "Pinging WebSocket...",
 	"websocket_response_invalid": "Latency is {{latency}}ms.\nWebSocket ping could not be fetched properly.",
-	"websocket_response_valid": "Latency is {{latency}}ms.\nWebSocket ping is {{websocket_ping}}ms."
+	"websocket_response_valid": "Latency is {{latency}}ms.\nWebSocket ping is {{websocket_ping}}ms.",
+	"roleadder_command_description": "Adds a role to the interactive message",
+	"roleadder_command_role_description": "The ID of the role you want to create the interaction for",
+	"roleadder_command_buttonname_description": "The name identifier for the button, needs to be one word! example: pathofexile",
+	"roleadder_command_buttonlabel_desription": "The label for the button. Example: Path of Exile",
+	"roleadder_command_invalid_role_id": "You did not enter a valid role ID",
+	"roleadder_command_invalid_buttonname": "You did not enter a valid button name",
+	"roleadder_command_invalid_buttonlabel": "You did not enter a valid button label",
+	"roleadder_command_interation_added": "Interaction added for role ({{role_id}}) with button name ({{button_name}}) and button label ({{button_label}})"
 }

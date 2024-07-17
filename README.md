@@ -29,8 +29,8 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Selander1998/keff-discbot.git
-   cd keff-discbot
+   git clone https://github.com/Selander1998/ts-discordbot.git
+   cd ts-discordbot
    ```
 
 2. **Install dependencies:**

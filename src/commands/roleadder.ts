@@ -1,29 +1,28 @@
 import { SlashCommandBuilder, CommandInteraction, SlashCommandStringOption } from "discord.js";
 import { Role } from "../dbmodels/role";
 import { RoleManager } from "../rolemanager";
+import i18n from "../i18n";
 
 const roleadderCommand = {
 	data: new SlashCommandBuilder()
 		.setName("addroletodb")
-		.setDescription("Adds a role to the interactive message")
+		.setDescription(i18n.t("roleadder_command_description"))
 		.addStringOption((roleId: SlashCommandStringOption) =>
 			roleId
 				.setName("roleid")
-				.setDescription("The ID of the role you want to create the interaction for")
+				.setDescription(i18n.t("roleadder_command_role_description"))
 				.setRequired(true)
 		)
 		.addStringOption((buttonName: SlashCommandStringOption) =>
 			buttonName
 				.setName("buttonname")
-				.setDescription(
-					"The name identifier for the button, needs to be one word! example: pathofexile"
-				)
+				.setDescription(i18n.t("roleadder_command_buttonname_description"))
 				.setRequired(true)
 		)
 		.addStringOption((buttonLabel: SlashCommandStringOption) =>
 			buttonLabel
 				.setName("buttonlabel")
-				.setDescription("The label for the button. example: Path of Exile")
+				.setDescription(i18n.t("roleadder_command_buttonlabel_desription"))
 				.setRequired(true)
 		),
 	async execute(interaction: CommandInteraction, roleManager: RoleManager) {
@@ -32,9 +31,9 @@ const roleadderCommand = {
 		const buttonName = interaction.options.get("buttonname");
 		const buttonLabel = interaction.options.get("buttonlabel");
 
-		if (!roleId) return interaction.reply("You did not enter a valid role ID");
-		if (!buttonName) return interaction.reply("You did not enter a valid button name");
-		if (!buttonLabel) return interaction.reply("You did not enter a valid button label");
+		if (!roleId) return interaction.reply(i18n.t("roleadder_command_invalid_role_id"));
+		if (!buttonName) return interaction.reply(i18n.t("roleadder_command_invalid_buttonname"));
+		if (!buttonLabel) return interaction.reply(i18n.t("roleadder_command_invalid_buttonlabel"));
 
 		const role = new Role();
 		role.roleId = roleId.value as string;
@@ -45,7 +44,11 @@ const roleadderCommand = {
 		await roleManager.reload();
 
 		await interaction.reply(
-			`Interaction added for role (${roleId.value}) with button name (${buttonName.value}) and button label (${buttonLabel.value})`
+			i18n.t("roleadder_command_interation_added", {
+				role_id: roleId.value,
+				button_name: buttonName.value,
+				button_label: buttonLabel.value,
+			})
 		);
 	},
 };
