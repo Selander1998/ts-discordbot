@@ -1,0 +1,7 @@
+{
+	"language_loaded": "Localization loaded as English",
+	"ping_command_description": "Fetches the ping and latency to the WebSocket",
+	"pinging_websocket": "Pinging WebSocket...",
+	"websocket_response_invalid": "Latency is {{latency}}ms.\nWebSocket ping could not be fetched properly.",
+	"websocket_response_valid": "Latency is {{latency}}ms.\nWebSocket ping is {{websocket_ping}}ms."
+}

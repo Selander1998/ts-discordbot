@@ -11,7 +11,7 @@ Discord Bot built with TypeScript. It allows users to add roles to themselves vi
 - **Database Integration:** Saves roles data in a database for persistent role management.
 - **Runtime Commands:** Offers commands to manage roles dynamically without requiring a bot restart.
 - **Server Join Role Assignment:** Adds a role automatically on a users server join.
-- **Profanity Filter:** Gives users a warning when using a word
+- **Profanity Filter:** Gives users a warning when using a blacklisted word
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ Before you begin, ensure you have met the following requirements:
    yarn install
    ```
 
-3. **Create a `.env` file in the root directory and add your configuration:**
+3. **Modify the `.env` file in the root directory and add your configuration:**
 
    ```env
    BOT_CLIENT_ID=your-bot-client-id

@@ -10,6 +10,8 @@ import { CommandsLoader } from "./commands";
 import { RoleManager } from "./rolemanager";
 import dotenv from "dotenv";
 import { Role } from "./dbmodels/role";
+import "./i18n";
+import i18n from "i18next";
 
 export const logging = true;
 export const envConfig = dotenv.config();
@@ -38,6 +40,10 @@ const sequelizeInstance = new Sequelize(
 );
 
 client.once("ready", async (botClient: Client<true>) => {
+	const language = process.env.GUILD_LANGUAGE as string;
+	await i18n.changeLanguage(language);
+	console.log(i18n.t("language_loaded"));
+
 	await sequelizeInstance.authenticate();
 	await sequelizeInstance.sync();
 

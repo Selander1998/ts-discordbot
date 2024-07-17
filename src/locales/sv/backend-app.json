@@ -1,0 +1,7 @@
+{
+	"language_loaded": "Språk laddades in som Svenska",
+	"ping_command_description": "Hämtar discordklientens WebSocket ping",
+	"pinging_websocket": "Pingar WebSocket...",
+	"websocket_response_invalid": "Fördröjningen är {{latency}}ms.\nWebSocket ping kunde inte hämtas korrekt.",
+	"websocket_response_valid": "Fördröjningen is {{latency}}ms.\nWebSocket pingen är {{websocket_ping}}ms."
+}

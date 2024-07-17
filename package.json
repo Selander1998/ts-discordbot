@@ -11,12 +11,17 @@
 	"dependencies": {
 		"discord.js": "^14.15.3",
 		"dotenv": "^16.4.5",
+		"i18next": "^23.12.1",
+		"i18next-browser-languagedetector": "^8.0.0",
+		"i18next-fs-backend": "^2.3.1",
+		"i18next-http-backend": "^2.5.2",
 		"mariadb": "^3.3.1",
 		"npx": "^10.2.2",
 		"sequelize": "^6.37.3",
 		"sequelize-typescript": "^2.1.6"
 	},
 	"devDependencies": {
+		"@types/i18next": "^13.0.0",
 		"@types/node": "^18.11.9",
 		"ts-node": "^10.9.1",
 		"typescript": "^5.5.2"
