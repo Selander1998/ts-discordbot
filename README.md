@@ -1,4 +1,4 @@
-# Typescipt Discordbot
+# Typescript Discordbot
 
 ## Overview
 
