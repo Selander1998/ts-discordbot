@@ -9,7 +9,11 @@ export class MessageListener {
 				if (message.content.includes(word)) {
 					message.reply("Apapap, dumma ord här... Stopp och belägg!");
 					new Delay(5000);
-					message.delete();
+					try {
+						message.delete();
+					} catch (error: unknown) {
+				      		console.error(error)
+					}
 				}
 			}
 		});
