@@ -8,11 +8,11 @@ export class MessageListener {
 			for (const word of profanity.filter) {
 				if (message.content.includes(word)) {
 					message.reply("Apapap, dumma ord här... Stopp och belägg!");
-					new Delay(5000);
+					await Delay(5000);
 					try {
-						message.delete();
+						await message.delete();
 					} catch (error: unknown) {
-				      		console.error(error)
+						console.error(error);
 					}
 				}
 			}
