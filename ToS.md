@@ -17,7 +17,7 @@ The Bot provides various features and functionalities as described in the bot's 
 - **4.3** The Bot may collect and store data to function correctly. By using the Bot, you consent to the collection and use of this data in accordance with our Privacy Policy.
 
 ### 5. Privacy Policy
-The Bot's Privacy Policy outlines how your data is collected, used, and protected. By using the Bot, you agree to the practices described in the Privacy Policy. (include link)
+The Bot's Privacy Policy outlines how your data is collected, used, and protected. By using the Bot, you agree to the practices described in the Privacy Policy. https://github.com/Selander1998/ts-discordbot/blob/main/privacypolicy.md
 
 ### 6. Limitation of Liability
 - **6.1** The bot and its owner(s) are not liable for any damages, direct or indirect, resulting from the use or inability to use the Bot.
